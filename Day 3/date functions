@@ -1,0 +1,41 @@
+select*from employee;
+select*from department;
+-- Display today's date.
+select CURDATE() from employee;
+-- Display the current date and time.
+select NOW() from employee;
+-- Display employee names along with their joining dates.
+select name,joining_date from employee;
+-- Display only the year from each employee's joining date.
+select YEAR(joining_date) from employee;
+-- Display only the month from each employee's joining date.
+select MONTH(joining_date) from employee;
+-- Display only the day from each employee's joining date.
+select DAY(joining_date) from employee;
+-- Display employees who joined in 2024.
+select name from employee
+where year(joining_date)=2024;
+-- Display employees who joined in the month of January.
+select name from employee
+where month(joining_date)=1;
+-- Display employees who joined after 2022.
+select name from employee
+where year(joining_date)>2022;
+-- Find how many days have passed since each employee joined.
+select DATEDIFF(CURDATE(),joining_date) from employee;
+-- Display employees who joined before 2023-01-01.
+select name from employee
+where (joining_date)<'2023-01-01';
+-- Display employees who joined between 2022-01-01 and 2023-12-31.
+select*from employee
+where joining_date between '2022-01-01' AND '2023-12-31';
+-- Display employees ordered by joining date (oldest first).
+select*from employee
+order by joining_date ASC;
+-- Display employees ordered by joining date (newest first).
+select*from employee
+order by joining_date DESC;
+-- Display the employee who joined first in the company.
+select name from employee
+order by joining_date ASC
+LIMIT 1;
